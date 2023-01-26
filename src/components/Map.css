@@ -1,0 +1,16 @@
+#mapImg img {
+    width:50%;
+    align-items: center;
+    margin: auto;
+}
+
+#mapImg {
+    display: flex;
+    flex-direction: column;
+    flex:wrap;
+    justify-content: center;
+    border: 3px solid rgb(25, 65, 71);
+    margin:3% 2%;
+    background-color: rgb(185, 125, 51);
+}
+
