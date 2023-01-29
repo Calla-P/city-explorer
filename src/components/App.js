@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer.js';
 import Location from './Location';
+import Weather from './Weather';
 import Map from  './Map';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -18,8 +19,22 @@ class App extends React.Component {
       lat: '',
       lon: '',
       isError: false,
-      errorMessage: ''
+      errorMessage: '',
+      weatherData:'',
+      isModalShown: false
     }
+  }
+
+  handleCloseModal = () => {
+    this.setState({
+      isModalShown:false
+    });
+  }
+
+  handleOpenModal = () => {
+    this.setState({
+      isModalShown: true 
+    });
   }
 
 
@@ -33,6 +48,8 @@ class App extends React.Component {
       let location = `https://us1.locationiq.com/v1/search.php?key=${key}&q=${this.state.searchCity}&format=json`;
 
       let locationData = await axios.get(location);
+
+      this.handleWeather();
 
       //saving of the data
       console.log('locationData:', locationData.data[0]);
@@ -51,6 +68,25 @@ class App extends React.Component {
       });
     };
   };
+
+
+  handleWeather = async () => {
+    try{  
+      let weatherURL = `${process.env.REACT_APP_SERVER}/weather?searchQuery=${this.state.searchCity}`;
+      
+      let weatherData = await axios.get(weatherURL);
+      console.log(weatherData);
+      this.setState({
+        weatherData: weatherData.data
+      });
+    } catch(error) {
+      this.setState({
+        errorMessage: error.message,
+        isError: true
+      });
+    };
+  };
+
 
   handleCityInput = (e) => {
     console.log(this.state.searchCity);
@@ -75,6 +111,12 @@ class App extends React.Component {
       display_name={this.state.display_name}
       latitude={this.state.lat}
       longitude={this.state.lon}/>
+
+      {this.state.weatherData && <Weather weather={this.state.weatherData}
+      city={this.searchCity}
+      show={this.handleOpenModal}
+      onHide={this.handleCloseModal}/>}
+
       <Map
       city_name={this.state.display_name}
       lat={this.state.lat}
