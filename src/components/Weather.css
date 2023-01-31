@@ -4,5 +4,21 @@ h2{
 }
 
 h3 {
-    color:rgb(215, 192, 158)
+    color:rgb(28, 41, 64)
+}
+
+div.modal-body{
+    background-image: url("https://images.pexels.com/photos/2310713/pexels-photo-2310713.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" );
+
+    color:rgb(142, 79, 25);
+    background-color: rgb(226, 191, 147);
+}
+
+div.modal-header{
+    background-image: linear-gradient(to bottom right, rgb(46, 135, 104), rgb(186, 108, 30));
+    text-align: center;
+};
+
+button{
+    background-color: rgb(20, 106, 78);
 }

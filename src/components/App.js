@@ -32,6 +32,7 @@ class App extends React.Component {
   }
 
   handleOpenModal = () => {
+    console.log('this.handleOpenModal');
     this.setState({
       isModalShown: true 
     });
@@ -50,6 +51,7 @@ class App extends React.Component {
       let locationData = await axios.get(location);
 
       this.handleWeather();
+      // this.handleOpenModal();
 
       //saving of the data
       console.log('locationData:', locationData.data[0]);
@@ -113,8 +115,9 @@ class App extends React.Component {
       longitude={this.state.lon}/>
 
       {this.state.weatherData && <Weather weather={this.state.weatherData}
-      city={this.searchCity}
-      show={this.handleOpenModal}
+      city={this.state.searchCity}
+      show={this.state.isModalShown}
+      openModal={this.handleOpenModal}
       onHide={this.handleCloseModal}/>}
 
       <Map
