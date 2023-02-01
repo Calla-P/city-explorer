@@ -66,4 +66,4 @@ Finish time: _____
 
 Actual time needed to complete: _____
 
-[Alt text](https://file%2B.vscode-resource.vscode-cdn.net/Users/pauladavidson/Downloads/webapi.jpg?version%3D1674626661293)
+
