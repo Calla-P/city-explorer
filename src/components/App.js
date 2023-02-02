@@ -3,6 +3,7 @@ import Header from './Header';
 import Footer from './Footer.js';
 import Location from './Location';
 import Weather from './Weather';
+import Movie from './Movie'
 import Map from  './Map';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -21,6 +22,7 @@ class App extends React.Component {
       isError: false,
       errorMessage: '',
       weatherData:'',
+      movieData:'',
       isModalShown: false
     }
   }
@@ -50,8 +52,8 @@ class App extends React.Component {
 
       let locationData = await axios.get(location);
 
-      this.handleWeather();
-      // this.handleOpenModal();
+      // this.handleWeather();
+      
 
       //saving of the data
       console.log('locationData:', locationData.data[0]);
@@ -61,7 +63,8 @@ class App extends React.Component {
         lat: locationData.data[0].lat,
         lon: locationData.data[0].lon,
         isError: false
-      },()=> console.log(this.state.lat));
+      },this.handleAPI);
+      // ()=> console.log(this.state.lat));
 
     } catch (error) {
       this.setState({
@@ -74,8 +77,8 @@ class App extends React.Component {
 
   handleWeather = async () => {
     try{  
-      let weatherURL = `${process.env.REACT_APP_SERVER}/weather?searchQuery=${this.state.searchCity}`;
-      
+      let weatherURL = `${process.env.REACT_APP_SERVER}/weather?lat=${this.state.lat}&lon=${this.state.lon}`;
+      console.log(weatherURL);
       let weatherData = await axios.get(weatherURL);
       console.log(weatherData);
       this.setState({
@@ -84,6 +87,28 @@ class App extends React.Component {
     } catch(error) {
       this.setState({
         errorMessage: error.message,
+        isError: true
+      });
+    };
+  };
+
+  handleAPI = () => {
+    this.handleWeather();
+    this.handleMovie();
+  };
+
+  handleMovie = async () => {
+    try{
+      let movieURL = `${process.env.REACT_APP_SERVER}/movie?search=${this.state.searchCity}`;
+
+      let movieData = await axios.get(movieURL);
+      console.log(movieData);
+      this.setState({
+        movieData: movieData.data
+      });
+    } catch(error) {
+      this.setState({
+        errorMessage: error.message, 
         isError: true
       });
     };
@@ -124,6 +149,9 @@ class App extends React.Component {
       city_name={this.state.display_name}
       lat={this.state.lat}
       lon={this.state.lon}/>
+
+      {this.state.movieData && <Movie movies={this.state.movieData}
+      city={this.state.searchCity}/>}
       <Footer/>
       </>
     );
