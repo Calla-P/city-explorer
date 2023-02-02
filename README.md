@@ -20,9 +20,7 @@ This application is to let the users search a city and see it on a map. When the
 City- Explorer will use CSS, HTML5, Bootstrap, React, and JavaScript.
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
@@ -56,14 +54,12 @@ Finish time: 8:30pm
 
 Actual time needed to complete: 2.5 hours to work out my errors
 
-Name of feature: ________________________________
+Name of feature: Movie and Weather API
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 4 hours
 
-Start time: _____
+Start time: 6:45pm 2/1/23
 
-Finish time: _____
+Finish time: 2/2/23
 
 Actual time needed to complete: _____
-
-
