@@ -44,7 +44,8 @@ class App extends React.Component {
   handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      console.log('search: ${this.state.searchCity');
+
+      console.log(`search: ${this.state.searchCity}`);
 
       // LocationIQ data (Api Data)
       let key = process.env.REACT_APP_LOCATIONIQ_API_KEY;
@@ -102,7 +103,7 @@ class App extends React.Component {
       let movieURL = `${process.env.REACT_APP_SERVER}/movie?search=${this.state.searchCity}`;
 
       let movieData = await axios.get(movieURL);
-      console.log(movieData);
+      console.log(movieData.data);
       this.setState({
         movieData: movieData.data
       });
@@ -139,19 +140,26 @@ class App extends React.Component {
       latitude={this.state.lat}
       longitude={this.state.lon}/>
 
-      {this.state.weatherData && <Weather weather={this.state.weatherData}
+      {this.state.weatherData && 
+      <Weather 
+      weather={this.state.weatherData}
       city={this.state.searchCity}
       show={this.state.isModalShown}
       openModal={this.handleOpenModal}
-      onHide={this.handleCloseModal}/>}
+      onHide={this.handleCloseModal}
+      />}
 
       <Map
       city_name={this.state.display_name}
       lat={this.state.lat}
       lon={this.state.lon}/>
 
-      {this.state.movieData && <Movie movies={this.state.movieData}
-      city={this.state.searchCity}/>}
+      {this.state.movieData && 
+      <Movie 
+        movies={this.state.movieData}
+        city={this.state.searchCity}
+      />}
+
       <Footer/>
       </>
     );

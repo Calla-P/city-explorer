@@ -1,34 +1,49 @@
 import React from 'react';
+import './Movie.css'
 import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+
 
 class Movies extends React.Component {
   render() {
     return (
       <>
-        <Card key={this.props.idx}>
-          <Card.Img variant="top" id={this.props.title} alt={this.props.title} src={this.props.poster}/>
-          <Card.Body>
+      <Col>
+      {this.props.movies.map((movie, idx) => (
+        <Card key={idx}>
+          <Card.Img variant="top" id={movie.title} alt={movie.title} src={movie.imgPath}/>
+          <Card.Body className={'moviecards'}>
+
             <div id="title">
-              <Card.Title>{this.props.title}</Card.Title>
+              <Card.Title>
+                {movie.title}
+                </Card.Title>
+
             </div>
+
             <div id="overview">
               <h5>Overview:</h5>
-              <p>{this.props.overview}</p>
+              <p>{movie.overview}</p>
             </div>
+
             <div id="rating">
               <h5>Rating:</h5> 
-              <p>{this.props.rating}</p>
+              <p>{movie.averageRating}</p>
             </div>
+
             <div id="reviews">
               <h5>Reviews:</h5> 
-              <p>{this.props.review}</p>
+              <p>{movie.totalReviews}</p>
             </div>
+
             <div id="releaseDate">
               <h5>Release Date:</h5>
-              <p>{this.props.releaseDate}</p>
+              <p>{movie.releaseDate}</p>
             </div>
           </Card.Body>
         </Card>
+      ))}
+      </Col>
       </>
     )
   };
