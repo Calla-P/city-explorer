@@ -16,11 +16,8 @@ div.card-body {
 }
 
 div.moviecards {
-  justify-content: center;
-  margin:100px;
+  
   border: 6px solid rgb(68, 64, 64);
   background-image: linear-gradient(rgba(117, 148, 161, 0.895), rgb(223, 216, 231));
-  height:auto;
-  width:500px;
   align-items: center
 };

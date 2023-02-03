@@ -10,8 +10,19 @@ class Movies extends React.Component {
       <>
       <Col>
       {this.props.movies.map((movie, idx) => (
-        <Card key={idx}>
-          <Card.Img variant="top" id={movie.title} alt={movie.title} src={movie.imgPath}/>
+        <Card 
+        key={idx} 
+        style={{
+          width:'30rem', 
+          height:'10%',
+          alignItems:'center',
+          backgroundcolor:'grey'}}
+          >
+          <Card.Img variant="top" id={movie.title} alt={movie.title} src={movie.imgPath} 
+          style={{height:'250px',
+          width:'350px', 
+          alignItems:'center'}}/>
+
           <Card.Body className={'moviecards'}>
 
             <div id="title">
