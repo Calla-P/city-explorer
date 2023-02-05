@@ -1,21 +1,27 @@
 import React from 'react';
-import './Movie.css'
+// import './Movie.css';
 import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
+// import Col from 'react-bootstrap/Col';
+import { Row } from 'react-bootstrap';
+import './Movie.css';
 
 
 class Movies extends React.Component {
   render() {
     return (
       <>
-      <Col>
+      <Row sm={3} md={3}>  
       {this.props.movies.map((movie, idx) => (
-        <Card 
+        <Card className={'cards'}
         key={idx} 
         style={{
+          display:'flex',
+          justifyContent:'center',
           width:'30rem', 
           height:'10%',
-          alignItems:'center',
+          padding:'10px',
+          margin:'42px',
+          border:'20px',
           backgroundcolor:'grey'}}
           >
           <Card.Img variant="top" id={movie.title} alt={movie.title} src={movie.imgPath} 
@@ -54,7 +60,7 @@ class Movies extends React.Component {
           </Card.Body>
         </Card>
       ))}
-      </Col>
+      </Row>
       </>
     )
   };
