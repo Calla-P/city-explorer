@@ -62,4 +62,14 @@ Start time: 6:45pm 2/1/23
 
 Finish time: 2/2/23
 
-Actual time needed to complete: _____
+Actual time needed to complete: 8 hours
+
+Name of feature: Components and modualizing with style
+
+Estimate of time needed to complete: 4 hours
+
+Start time: 1:15pm
+
+Finish time: 5:00
+
+Actual time needed to complete: 5 hours

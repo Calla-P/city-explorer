@@ -1,7 +1,9 @@
 import React from 'react';
-import './Weather.css'
+import './Weather.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { Accordion } from 'react-bootstrap';
+import WeatherDay from './WeatherDay';
 
 class Weather extends React.Component {
 
@@ -21,13 +23,16 @@ class Weather extends React.Component {
                     </Modal.Header>
 
                     <Modal.Body>
+                        <Accordion defaultActiveKey='0'>
                         {this.props.weather.map((day, idx) => (
-                            <article key={idx}>
-                                <h3>Date: {day.date}</h3>
-                                <p>Description: {day.description}</p>
-                            </article>
+                            // <article key={idx}>
+                            //     <h3>Date: {day.date}</h3>
+                            //     <p>Description: {day.description}</p>
+                            // </article>
+                            <WeatherDay day={day} idx={idx}/>
                         ))
                         }
+                        </Accordion>
 
                     </Modal.Body>
 
@@ -37,45 +42,6 @@ class Weather extends React.Component {
         );
     };
 };
-
-// {/* <Modal
-// show={this.props.show}
-// onHide={this.props.onHide}>
-
-// <Modal.Header closeButton>
-//     <Modal.Title>Three Day forecast for {this.props.city}</Modal.Title>
-// </Modal.Header>
-
-// <Modal.Body>
-//     {this.props.weather.map((day, idx) => (
-//         <article key={idx}>
-//             <h3>Date: {day.date}</h3>
-//             <p>Description: {day.description}</p>
-//         </article>
-//     ))
-//     }
-
-// </Modal.Body>
-
-// </Modal> */}
-
-// {this.props.weather.map()}
-
-
-// <div id="dailyForecast">
-//     <section>
-//         <h2> Three Days of Weather </h2>
-//         <div id='weather'>
-// {this.props.weather.map((day,idx) => (
-//     <article key={idx}>
-//         <h3>Date: {day.date}</h3>
-//         <p>Description{day.description}</p>
-//     </article>
-// ))
-// }
-//         </div>
-//     </section>
-// </div>
 
 
 export default Weather;
